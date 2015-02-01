@@ -23,7 +23,7 @@ var rocambole = require('rocambole');
 var stripStatement = require('rocambole-strip-arbitrary');
 
 rocambole.moonwalk('if (true) { console.log("foo"); }', function (node) {
-	stripStatement(node, 'console', ['warn', error]);
+	stripStatement(node, 'console', ['warn', 'error']);
 }).toString();
 //=> if (true) { void 0; }
 ```

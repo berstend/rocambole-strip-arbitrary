@@ -1,12 +1,18 @@
-# rocambole-strip-console [![Build Status](https://travis-ci.org/sindresorhus/rocambole-strip-console.svg?branch=master)](https://travis-ci.org/sindresorhus/rocambole-strip-console)
+# rocambole-strip-arbitrary
 
-> Strip console statements from a [rocambole](https://github.com/millermedeiros/rocambole) AST
+> Strip arbitrary statements (e.g. console) from a [rocambole](https://github.com/millermedeiros/rocambole) AST
+
+## Note
+
+This is based on [sindresorhus/rocambole-strip-console](https://github.com/sindresorhus/rocambole-strip-console) and adds more parameters to allow arbitrary statements to be removed with an optional whitelist of properties to keep intact.
+
+This is useful to e.g. strip `console` or `log` statements in production builds but keep `.warn` and `.error` statements in the code.
 
 
-## Install
+## Install (from Github, not on NPM yet)
 
 ```sh
-$ npm install --save rocambole-strip-console
+$ npm install --save berstend/rocambole-strip-arbitrary
 ```
 
 
@@ -14,17 +20,18 @@ $ npm install --save rocambole-strip-console
 
 ```js
 var rocambole = require('rocambole');
-var stripconsole = require('rocambole-strip-console');
+var stripStatement = require('rocambole-strip-arbitrary');
 
 rocambole.moonwalk('if (true) { console.log("foo"); }', function (node) {
-	stripConsole(node);
+	stripStatement(node, 'console', ['warn', error]);
 }).toString();
 //=> if (true) { void 0; }
 ```
 
-To prevent any side-effects, `console.*` is replaced with `void 0` instead of being removed.
+
+To prevent any side-effects, `console.*` is replaced with `void 0` instead of being removed. UglifyJS can later remove these void statements.
 
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com) & berstend

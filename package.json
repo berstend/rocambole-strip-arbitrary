@@ -1,13 +1,11 @@
 {
-  "name": "rocambole-strip-console",
-  "version": "1.0.0",
-  "description": "Strip console statements from a rocambole AST",
+  "name": "rocambole-strip-arbitrary",
+  "version": "1.0.1",
+  "description": "Strip arbitrary statements from a rocambole AST",
   "license": "MIT",
-  "repository": "sindresorhus/rocambole-strip-console",
+  "repository": "berstend/rocambole-strip-arbitrary",
   "author": {
-    "name": "Sindre Sorhus",
-    "email": "sindresorhus@gmail.com",
-    "url": "http://sindresorhus.com"
+    "name": "berstend"
   },
   "engines": {
     "node": ">=0.10.0"
